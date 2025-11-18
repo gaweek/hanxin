@@ -1,14 +1,13 @@
-算法思路步骤：
-    // 输入：n - 矩阵维度
-    //       a - 压缩数组（长度2n-1）
-    //       v - 输入向量（长度n）
-    // 输出：y - 矩阵向量乘积（长度n）
-算法实现：
-function DirectMatrixMultiply(n, a, v):
-    y = new array of size n initialized to 0
-    for i from 0 to n-1:
-        for j from 0 to n-1:
-            k = n-1 + i - j  // 计算对角线索引
-            y[i] = y[i] + a[k] * v[j]
-    
-    return y
+算法：toeplitz_direct（直接暴力计算）
+输入：整数n，数组a[0..2n-2]，数组v[0..n-1]
+输出：数组y[0..n-1]（满足y = A × v）
+
+伪代码：
+1. 初始化数组y[0..n-1]为0
+2. for i ← 0 to n-1 do
+3.     for j ← 0 to n-1 do
+4.         k ← n-1 + i - j     // 计算对角线索引
+5.         y[i] ← y[i] + a[k] × v[j]
+6.     end for
+7. end for
+8. return y
